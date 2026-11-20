@@ -1,0 +1,265 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Plato Lleno</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: una sola columna angosta; encabezado con plato ilustrado, tarjeta de datos de depósito como pieza central, fotos de los perritos al final. */
+:root {
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+  --fg: #16202E;
+  --muted: #566377;
+  --accent: #1D4F91;
+  --accent-fg: #FFFFFF;
+  --tag: #F2B632;
+  --tag-fg: #2A1F00;
+  --line: #D9DFE8;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E141C;
+    --surface: #162030;
+    --fg: #E8EDF4;
+    --muted: #9AA7B8;
+    --accent: #6FA3E8;
+    --accent-fg: #0A1626;
+    --line: #26344A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E141C;
+  --surface: #162030;
+  --fg: #E8EDF4;
+  --muted: #9AA7B8;
+  --accent: #6FA3E8;
+  --accent-fg: #0A1626;
+  --line: #26344A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 720px; margin-inline: auto; display: flex; flex-direction: column; gap: 56px; }
+h1, h2 { font-family: var(--font-display); line-height: 1.08; text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+h1 { font-size: clamp(2.3rem, 8vw, 3.6rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 5vw, 2.1rem); font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+/* Encabezado */
+.hero { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; padding-top: 12px; }
+.hero > * { min-width: 0; }
+.hero-text { display: flex; flex-direction: column; gap: 18px; }
+.hero-text p.lead { color: var(--muted); font-size: 1.1rem; max-width: 46ch; }
+.hero-art { max-width: 320px; width: 100%; justify-self: center; }
+.hero-art svg { width: 100%; height: auto; display: block; }
+@media (min-width: 640px) { .hero { grid-template-columns: 1.3fr 1fr; } }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+  padding: 13px 22px; border-radius: 10px; border: 2px solid var(--accent);
+  display: inline-block; min-height: 48px;
+}
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-ghost { background: transparent; color: var(--accent); }
+.btn:focus-visible, .copy:focus-visible { outline: 3px solid var(--tag); outline-offset: 2px; }
+
+/* Pasos */
+.section { display: flex; flex-direction: column; gap: 20px; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; counter-reset: paso; }
+.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; counter-increment: paso; }
+.steps li::before {
+  content: counter(paso);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--tag); color: var(--tag-fg);
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem;
+  display: grid; place-items: center;
+}
+.steps strong { display: block; }
+.steps span { color: var(--muted); }
+
+/* Datos de depósito */
+.deposit {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 22px; display: flex; flex-direction: column; gap: 6px;
+  box-shadow: 0 1px 0 var(--line);
+}
+.deposit h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 6px; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.row:first-of-type { border-top: 0; }
+.row > * { min-width: 0; }
+.label { grid-column: 1 / -1; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.value { font-size: 1.2rem; font-weight: 600; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.value.pending { color: var(--muted); font-weight: 500; font-style: italic; }
+.copy {
+  font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  background: transparent; color: var(--accent); border: 2px solid var(--line);
+  border-radius: 8px; padding: 8px 14px; min-height: 40px;
+}
+.copy:hover { border-color: var(--accent); }
+.note { color: var(--muted); font-size: 0.95rem; padding-top: 10px; border-top: 1px solid var(--line); margin-top: 6px; }
+
+/* Transparencia */
+.promises { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.promises > div { min-width: 0; padding-top: 14px; border-top: 3px solid var(--tag); display: flex; flex-direction: column; gap: 6px; }
+.promises b { font-family: var(--font-display); font-size: 1.1rem; }
+.promises span { color: var(--muted); }
+
+/* Fotos */
+.photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.photo {
+  min-width: 0; aspect-ratio: 4 / 3; max-width: 100%;
+  border: 2px dashed var(--line); border-radius: 14px;
+  display: grid; place-items: center; text-align: center; padding: 14px;
+  color: var(--muted); font-size: 0.95rem;
+}
+
+footer { color: var(--muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line); padding-top: 22px; }
+footer a { color: var(--accent); font-weight: 700; }
+
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: 10px;
+  font-weight: 600; font-size: 0.95rem; max-width: calc(100% - 32px);
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Plato Lleno · alimento para perritos</p>
+      <h1>Ayúdanos a llenar el plato.</h1>
+      <p class="lead">Damos de comer todos los días a perritos que no tienen casa. Cada depósito se convierte en croquetas, y te mostramos la compra en nuestra página de Facebook.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#donar">Quiero donar</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/" target="_blank" rel="noopener">Ver nuestro Facebook</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 240 190" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="120" cy="172" rx="96" ry="11" fill="var(--line)"/>
+        <path d="M26 82 Q34 158 120 160 Q206 158 214 82 Z" fill="var(--accent)"/>
+        <ellipse cx="120" cy="82" rx="94" ry="24" fill="var(--accent)"/>
+        <ellipse cx="120" cy="82" rx="80" ry="17" fill="var(--bg)"/>
+        <g fill="var(--tag)" stroke="var(--tag-fg)" stroke-width="2">
+          <circle cx="78" cy="78" r="10"/><circle cx="102" cy="68" r="10"/><circle cx="128" cy="66" r="10"/>
+          <circle cx="152" cy="74" r="10"/><circle cx="92" cy="86" r="10"/><circle cx="118" cy="82" r="10"/>
+          <circle cx="144" cy="88" r="10"/><circle cx="112" cy="54" r="10"/><circle cx="136" cy="52" r="10"/>
+          <circle cx="124" cy="40" r="10"/>
+        </g>
+        <path d="M60 118 Q120 134 180 118" fill="none" stroke="var(--bg)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+      </svg>
+    </div>
+  </header>
+
+  <section class="section" id="donar">
+    <h2>Cómo donar</h2>
+    <ol class="steps">
+      <li><div><strong>Haz tu depósito</strong><span>Cualquier cantidad ayuda. Usa los datos de la cuenta que aparecen abajo.</span></div></li>
+      <li><div><strong>Mándanos tu comprobante</strong><span>Escríbenos un mensaje en Facebook con la foto de tu depósito.</span></div></li>
+      <li><div><strong>Mira a dónde llegó</strong><span>Publicamos la foto de la compra de alimento y de cuando se lo damos a los perritos.</span></div></li>
+    </ol>
+
+    <div class="deposit">
+      <h3>Datos para el depósito</h3>
+      <div class="row">
+        <span class="label">Banco</span>
+        <span class="value pending" id="v-banco">[Nombre del banco]</span>
+        <button class="copy" type="button" data-target="v-banco">Copiar</button>
+      </div>
+      <div class="row">
+        <span class="label">Tipo de cuenta</span>
+        <span class="value pending" id="v-tipo">[Ahorro o monetaria]</span>
+        <button class="copy" type="button" data-target="v-tipo">Copiar</button>
+      </div>
+      <div class="row">
+        <span class="label">Número de cuenta</span>
+        <span class="value pending" id="v-cuenta">[Número de cuenta]</span>
+        <button class="copy" type="button" data-target="v-cuenta">Copiar</button>
+      </div>
+      <div class="row">
+        <span class="label">A nombre de</span>
+        <span class="value pending" id="v-titular">[Nombre del titular]</span>
+        <button class="copy" type="button" data-target="v-titular">Copiar</button>
+      </div>
+      <p class="note">Si prefieres que no mencionemos tu nombre al agradecer, avísanos en el mensaje.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Cómo cuidamos tu donación</h2>
+    <div class="promises">
+      <div><b>Todo va a comida</b><span>Compramos croquetas y alimento húmedo con lo que se recibe.</span></div>
+      <div><b>Con fotos</b><span>Subimos la compra y el reparto a Facebook para que lo veas.</span></div>
+      <div><b>Cuentas claras</b><span>Publicamos un resumen de lo recibido y lo gastado.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Ellos te esperan</h2>
+    <div class="photos">
+      <div class="photo">Foto de [nombre del perrito]</div>
+      <div class="photo">Foto de [nombre del perrito]</div>
+      <div class="photo">Foto de [nombre del perrito]</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>¿Dudas o quieres ayudar de otra forma, por ejemplo llevando alimento?</p>
+    <p><a href="https://www.facebook.com/" target="_blank" rel="noopener">Escríbenos por Facebook</a></p>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var toast = document.getElementById('toast');
+  var timer;
+  function say(msg) {
+    toast.textContent = msg;
+    toast.hidden = false;
+    clearTimeout(timer);
+    timer = setTimeout(function () { toast.hidden = true; }, 2200);
+  }
+  function selectNode(node) {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(node);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var node = document.getElementById(btn.getAttribute('data-target'));
+      var text = node.textContent.trim();
+      if (text.charAt(0) === '[') { say('Falta completar este dato'); return; }
+      var done = function () { say('Copiado'); };
+      var fail = function () { selectNode(node); say('Selecciónalo y cópialo'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fail);
+      } else { fail(); }
+    });
+  });
+})();
+</script>
+
+</body></html>
